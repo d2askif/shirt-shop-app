@@ -1,0 +1,24 @@
+<div class="container">
+ <div class="row">
+     <div class="col-xs-2">
+<select name="slColor" (change)="onColorSelected($event)">
+        <option [value]="all" disabled>Choose colour</option>
+        <option  value = ".*?"> all</option>
+        <option *ngFor="let opt of colourOptions" [value]="opt">
+                {{ opt }}
+            </option>
+</select>
+</div> 
+<div class="col-xs-2">
+        <select name="slSize" (change)="onSizeSelected($event)">
+                <option [value]="null" disabled>Choose size</option>
+                <option  value = ".*?"> all</option>
+                <option *ngFor="let opt of sizeOptions" [value]="opt">
+                        {{ opt }}
+                    </option>
+        </select>
+        </div> 
+</div>
+<br> 
+<app-item-shirt *ngFor="let element of arryOfItemShirt" [item]="element"></app-item-shirt>
+</div>

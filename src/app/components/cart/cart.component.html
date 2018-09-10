@@ -1,0 +1,12 @@
+<div class="container-fluid mr-1">
+<mat-dialog-content>
+        <div *ngIf="shirtsInCart.length > 0; else noOrder">
+            <app-item-in-cart *ngFor="let order of shirtsInCart" [item]="order"></app-item-in-cart>          
+         </div>
+          <ng-template #noOrder>
+             No order in the cart!!
+         </ng-template>
+        </mat-dialog-content>
+        <br>
+        <p><strong>Total Praice :{{totalPraice}}</strong></p>
+</div>

@@ -1,0 +1,49 @@
+<!-- item-detail.component displays the details of a shirt in the store -->
+<div class="container">
+<div class="row">
+  <div class="col-xs-12">
+    <img [src]="itemToDisplay.picture" alt="" class="img-responsive">
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>{{itemToDisplay.name}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+       Price: {{itemToDisplay.price}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+       Size: {{itemToDisplay.size}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+       Colour: {{itemToDisplay.colour}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+       Quantity: {{itemToDisplay.quantity}}
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-6" *ngIf="isInTheCartAlready()==false; else oneMore">
+      <button   [disabled]="isMaxOrderReached()" class="btn btn-primary" (click)=addToCart()> Add to basket</button>
+    </div>
+    <ng-template #oneMore>
+        <div class="col-xs-6">
+        <button [disabled]="isMaxOrderReached()" class="btn btn-primary" (click)=addToCart()> Add one more</button>
+        <p *ngIf="isMaxOrderReached()" style="color:red;"> Item out of stock</p>
+      </div>
+      </ng-template>
+      
+    <div class="col-xs-6">
+      <button class="btn btn-primary" (click)="onGoBack()"> Back</button>
+    </div>
+  </div>
+</div>
+</div>
