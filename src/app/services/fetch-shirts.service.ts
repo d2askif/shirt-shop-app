@@ -25,7 +25,7 @@ export class FetchShirtsService {
   private _url = "http://mock-shirt-backend.getsandbox.com/shirts";
   private ShirtsInStor: Shirt[] = [];
   private cart: Shirt[] = [];
-  public orderInCartSubject: ReplaySubject<number> = new ReplaySubject(5); // brodcaster for order in cart changes
+  public orderInCartSubject: ReplaySubject<number> = new ReplaySubject(0); // brodcaster for order in cart changes
   public dataObservable$: Observable <null> ;
   private dataObserver: Observer <null> ;
 
