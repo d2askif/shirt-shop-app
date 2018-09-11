@@ -1,25 +1,39 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ItemDetailComponent } from './item-detail.component';
+import { FetchShirtsService } from '../../../services/fetch-shirts.service';
+import { AppModule } from '../../../app.module';
 
-describe('ItemDetailComponent', () => {
-  let component: ItemDetailComponent;
-  let fixture: ComponentFixture<ItemDetailComponent>;
-
+describe('Item-detail-component',()=>{
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemDetailComponent ]
-    })
-    .compileComponents();
+      imports:[AppModule],
+      declarations: [ AppModule, ItemDetailComponent ],
+      providers: [ {provide:FetchShirtsService}]
+    });
   }));
+});
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ItemDetailComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    let fixture = TestBed.createComponent(ItemDetailComponent);
+    let app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
-});
+  
+  it('should use fetchShirtsDataService',()=>{
+    let fixture = TestBed.createComponent(ItemDetailComponent);
+    let app = fixture.debugElement.componentInstance;
+    let fetchShirtsDataService = fixture.debugElement.injector.get(FetchShirtsService);
+    fixture.detectChanges();
+    expect(fetchShirtsDataService.getAllShirtsInStor()).not.toBeNull();
+  });
+  
+  it('ItemTodisplay should exist',()=>{
+    let fixture = TestBed.createComponent(ItemDetailComponent);
+    let app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    expect(app.itemToDisplay).not.toBeNull();
+  });
+
+
